@@ -47,9 +47,12 @@ You can also narrow down the list by typing:
 
 # Install
 
+
 ```
 NeoBundle 'anvaka/vim-define-key'
 ```
+
+This package depends on [CtrlP](https://github.com/ctrlpvim/ctrlp.vim). Make sure to grab one of those too.
 
 # Disclaimer
 
