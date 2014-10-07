@@ -1,4 +1,3 @@
-throw "blah"
 if !exists('g:loaded_ctrlp') || !g:loaded_ctrlp
   finish
 endif
@@ -6,7 +5,8 @@ endif
 let s:save_cpo = &cpo
 set cpo&vim
 
-command! CtrlPKeys call ctrlp#init(ctrlp#keys#id())
+call cmd#attach()
+command! CtrlPKeys call ctrlp#init(cmd#id())
 
 let &cpo = s:save_cpo
 unlet s:save_cpo
