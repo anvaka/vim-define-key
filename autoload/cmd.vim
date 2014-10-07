@@ -22,7 +22,7 @@ let s:keys_var = {
   \ 'sname': 'keys',
   \ 'type': 'line',
   \ 'sort': 0,
-	\ 'postrender': 'cmd#enter',
+	\ 'postrender': 'cmd#postrender',
   \ }
 
 " Pre-load the vim commands list
@@ -101,6 +101,7 @@ endfunction
 function! s:syntax()
 	if ctrlp#nosy() | retu | en
   cal ctrlp#hicheck('CtrlPKeysKey', 'Identifier')
+  cal ctrlp#hicheck('CtrlPKeysMatch', 'Identifier')
 	sy match CtrlPKeysKey '^> .* ' contains=CtrlPLinePre
 endfunction
 
@@ -141,7 +142,6 @@ function! cmd#accept(mode, str)
 endfunc
 
 function! cmd#postrender(pat)
-
 endfunction
 
 function! cmd#exit()
