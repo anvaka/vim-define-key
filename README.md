@@ -10,10 +10,6 @@ can't recall its keyboard shortcut.
 This project implements `commands palette` interface where you can type human
 readable description of a command and get it executed immediately.
 
-# Demo
-
-![image](https://raw.githubusercontent.com/anvaka/vim-define-key/master/images/vimkey.gif)
-
 # How to use
 
 Instead of
@@ -36,23 +32,16 @@ argument:
 call cmd#define('Reload .vimrc', ":source $MYVIMRC<CR>", "<YOUR_KEY>")
 ```
 
-Now every time when you invoke `:CtrlPKeys` you will find this feature in the
+Now every time when you invoke `:Unite menu:palette` you will find this feature in the
 list of available commands
 
-![image](https://raw.githubusercontent.com/anvaka/vim-define-key/master/images/there.png)
-
-You can also narrow down the list by typing:
-
-![image](https://raw.githubusercontent.com/anvaka/vim-define-key/master/images/filter.png)
-
 # Install
-
 
 ```
 NeoBundle 'anvaka/vim-define-key'
 ```
 
-This package depends on [CtrlP](https://github.com/ctrlpvim/ctrlp.vim). Make sure to grab one of those too.
+This package depends on [Unite](https://github.com/Shougo/unite.vim). Make sure to grab it as well.
 
 # Disclaimer
 
