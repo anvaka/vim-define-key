@@ -14,13 +14,30 @@ function! cmd#define(description, command, ...)
   let key = (a:0 == 1) ? a:1 : ''
   let feedKeyCommand = s:getFeedKeys(a:command)
 
+  let descriptionWithKey = s:getDescriptionWithKey(a:description, key)
   call add(g:unite_source_menu_menus.palette.command_candidates,
-        \ [a:description, feedKeyCommand])
+        \ [descriptionWithKey, feedKeyCommand])
 
   if a:0 == 1
     " We have custom mapping. use it:
     exec 'nmap ' . key . ' ' . a:command
   endif
+endfunction
+
+function! s:getDescriptionWithKey(description, key)
+  let finalString = strpart(a:description, 0, 75)
+  let leadingZero = 75 - strlen(finalString)
+  if leadingZero > 0
+    let finalString .= s:makeSpaces(leadingZero)
+  else
+    let finalString .= "..."
+  endif
+
+  if strlen(a:key) > 0
+    let finalString .= "\t".  a:key
+  endif
+
+  return finalString
 endfunction
 
 
@@ -35,16 +52,15 @@ function s:getLongestKey(entries)
   return maxLength
 endfunction
 
-function s:format(val)
-  let key = a:val['key']
-  let diff = s:longestKey - strlen(key) + 1
+function s:makeSpaces(spacesCount)
+  let diff = a:spacesCount
   let spaces = ''
   while diff > 0
     let spaces = spaces . ' '
     let diff = diff - 1
   endwhile
 
-  return key . spaces . ' ' . a:val['description']
+  return spaces
 endfunction
 
 " Public Interface with CtrlP {{{2
